@@ -1,0 +1,31 @@
+$body-bg: #c1bdba;
+$nav-bg: #eed193;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+	overflow-y: scroll; 
+}
+
+body {
+  background: $body-bg url("../images/icecream.jpg") no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.footer {
+  background-color: $nav-bg;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.navbar{
+  background-color: $nav-bg;
+}
