@@ -63,7 +63,7 @@ a {
     }
   }
   
-  .tab-content > div:last-child {
+  .tab-content > div:nth-child(2) {
     display:none;
   }
   
@@ -174,4 +174,8 @@ a {
   .forgot {
     margin-top:-20px;
     text-align:right;
+  }
+
+  #loginMessage, #signupMessage {
+    text-align: center;
   }

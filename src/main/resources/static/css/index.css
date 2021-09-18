@@ -56,7 +56,7 @@ a:hover {
   color: #ffffff;
 }
 
-.tab-content > div:last-child {
+.tab-content > div:nth-child(2) {
   display: none;
 }
 
@@ -176,5 +176,9 @@ textarea {
 .forgot {
   margin-top: -20px;
   text-align: right;
+}
+
+#loginMessage, #signupMessage {
+  text-align: center;
 }
 /*# sourceMappingURL=index.css.map */
