@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Home</title>
+    <style>
+      .card {
+        background: #13232f;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+        border: 0;
+        border-radius: 1rem
+      }
+    </style>
+</head>
+<body>
+
+  <!-- nav bar starts -->
+  <nav class="navbar navbar-light" style="position: sticky; top:0; z-index: 2;">
+    <a class="navbar-brand" href="#">Hamro Menu</a>
+  </nav>
+  <!-- nav bar ends -->
+
+  <div class="container heading">
+      Available Items
+  </div>
+
+  <main>
+    <div class="container-fluid my-4 p-3" style="position: relative;">
+        <div class="row row1">
+          <div class="col col-sm-3 mb-3">
+            <div class="card shadow-sm"> <img src="images/menu1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="card-title">Salad</div>
+                    <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
+                    <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+                </div>
+            </div>
+        </div>
+            <div class="col col-sm-3 mb-3">
+              <div class="card shadow-sm"> <img src="images/menu2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="card-title">Salad</div>
+                      <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
+                      <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+                    </div>
+              </div>
+          </div>
+            <div class="col col-sm-3 mb-3">
+              <div class="card shadow-sm"> <img src="images/menu3.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="card-title">Salad</div>
+                      <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
+                      <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+                    </div>
+              </div>
+          </div>
+            <div class="col col-sm-3 mb-3">
+              <div class="card shadow-sm"> <img src="images/menu4.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <div class="card-title">Salad</div>
+                    <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
+                    <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- first row ends here -->
+      <div class="row row2 pb-3">
+        <div class="col col-sm-3 mb-3">
+          <div class="card shadow-sm"> <img src="images/menu5.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="card-title">Salad</div>
+                <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
+                  <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+                </div>
+          </div>
+      </div>
+
+      <div class="col col-sm-3 mb-3">
+        <div class="card shadow-sm"> <img src="images/menu6.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="card-title">Salad</div>
+                <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
+                <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col col-sm-3 mb-3">
+        <div class="card shadow-sm"> <img src="images/menu7.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="card-title">Salad</div>
+                <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
+                <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+<!-- second row ends here -->
+
+    </div>
+</main>
+
+<div class="container order">
+    <button class="button">CREATE ORDER</button>
+</div>
+
+  <!-- Footer-->
+  <div class="footer">
+        <div class="container">
+            <p>mygroup Copyright &copy; 2021</p>
+        </div>
+  </div>
+
+</body>
+</html>

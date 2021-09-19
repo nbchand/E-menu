@@ -103,7 +103,7 @@ $('#loginForm').submit(function(event){
       if(data){
         $('#loginMessage').show().html('<div class="alert alert-danger">'+data+'</div>');
       }else{
-        location.href = "/home";
+        location.href = "/menu";
       }
         
     })
