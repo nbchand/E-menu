@@ -49,12 +49,16 @@ $('#signUpForm').submit(function(event){
 
   event.preventDefault();
 
-  const formData = $(this).serializeArray().reduce(function(obj, item) {
-    obj[item.name] = item.value;
-    return obj;
-  }, {});
+  //using jquery
+  // const formData = $(this).serializeArray().reduce(function(obj, item) {
+  //   obj[item.name] = item.value;
+  //   return obj;
+  // }, {});
 
-  const data = JSON.stringify(formData);
+  // const data = JSON.stringify(formData);
+
+  //using native way
+  const data = JSON.stringify(Object.fromEntries(new FormData(this)));
 
   fetch('/signup',{
       method: 'POST',
@@ -63,9 +67,16 @@ $('#signUpForm').submit(function(event){
       },
       body: data,
     })
+    //converts promise into string
     .then(response => response.text())
     .then(data => {
-      $('#signupMessage').show().html('<div class="alert alert-danger">'+data+'</div>');
+      if(data){
+        $('#signupMessage').show().html('<div class="alert alert-danger">'+data+'</div>');
+      }else{
+        $('#signupMessage').show().html('<div class="alert alert-success">Account successfully created</div>');
+        $('#signUpForm').trigger("reset");
+      }
+        
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -77,5 +88,29 @@ $('#signUpForm').submit(function(event){
 //handle login form submission
 $('#loginForm').submit(function(event){
   event.preventDefault();
+
+  const data = JSON.stringify(Object.fromEntries(new FormData(this)));
+
+  fetch('/login',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: data,
+    })
+    .then(response => response.text())
+    .then(data => {
+      if(data){
+        $('#loginMessage').show().html('<div class="alert alert-danger">'+data+'</div>');
+      }else{
+        location.href = "/home";
+      }
+        
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+
   }
 )

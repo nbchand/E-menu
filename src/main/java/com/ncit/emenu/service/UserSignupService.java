@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserLoginService {
+public class UserSignupService {
 
     @Autowired
-    private UserRepo userRepo;
-    
-    public User loginUser(String email){
-        return userRepo.findByEmail(email);
+    UserRepo userRepo;
+
+    public void userSignup(User user){
+        userRepo.save(user);
+    }
+
+    public boolean isEmailTaken(String email){
+        return userRepo.existsUserByEmail(email);
     }
 }

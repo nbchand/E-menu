@@ -57,4 +57,15 @@ public class Item implements Serializable {
         this.userId = userId;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " itemId='" + getItemId() + "'" +
+            ", name='" + getName() + "'" +
+            ", price='" + getPrice() + "'" +
+            ", userId='" + getUserId() + "'" +
+            "}";
+    }
+
+
 }
