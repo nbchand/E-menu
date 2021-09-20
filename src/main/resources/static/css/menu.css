@@ -67,6 +67,19 @@
     box-shadow: -1px 6px 13px rgba(255, 150, 43, 0.35)
 }
 
+.active > .btn-warning{
+    background-color: rgb(25, 1, 90);
+    color: #ffffff;
+    box-shadow: none;
+    border: none;
+  }
+
+.active > .btn:hover{
+    background-color: rgb(25, 1, 90);
+    color: #ffffff;
+    box-shadow: none;
+  }
+
 .order {
     margin-bottom: 15%;
     text-align: center;
