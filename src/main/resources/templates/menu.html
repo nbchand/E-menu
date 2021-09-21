@@ -4,122 +4,156 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Home</title>
-    <style>
-      .card {
-        background: #13232f;
-        box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
-        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-        border: 0;
-        border-radius: 1rem
-      }
-    </style>
+    <title>Menu</title>
 </head>
 <body>
 
-  <!-- nav bar starts -->
-  <nav class="navbar navbar-light" style="position: sticky; top:0; z-index: 2;">
-    <a class="navbar-brand" href="#">Hamro Menu</a>
-  </nav>
-  <!-- nav bar ends -->
+    <!-- nav bar starts -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="position: sticky; top:0; z-index: 2;">
+        <a class="navbar-brand" href="#">Hamro Menu</a>
 
-  <div class="container heading">
-      Available Items
-  </div>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Orders</a>
+              </li>
+            </ul>
 
-  <main>
-    <div class="container-fluid my-4 p-3" style="position: relative;">
-        <div class="row row1">
-          <div class="col col-sm-3 mb-3">
-            <div class="card shadow-sm"> <img src="images/menu1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <div class="card-title">Salad</div>
-                    <div class="price mb-3"> <span class="float-start">Rs.500</span></div>
-                    <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+            <form class="form-inline my-2 my-lg-0" action="/logout" method="GET">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Logout</button>
+              </form>
+
+    </nav>
+    <!-- nav bar ends -->
+
+
+        <div class="container heading"><h1>Available Items</h1></div>
+        <div class="container addBtn"><button id="addBtn">Add item</button></div>
+        <div class="formContainer" id="formContainer">           
+            <form id="dataInput">
+                <h3 class="formTitle">ADD ITEM</h3><hr>
+                <div class="name">
+                    <label class="addItem">Enter Name :</label>
+                    <input class="addItem" maxlength="20" type="text">
                 </div>
+                <div class="price">
+                    <label class="addItem">Enter Price :</label>
+                    <input class="addItem" type="number">
+                </div>
+                <div class="picture">
+                    <label class="addItem">Add picture :</label>
+                    <input class="addItem file" type="file">
+                </div>
+                <div class="buttons">
+                    <input class="addItem" id="submit" type="submit" value="SUBMIT">
+                    <input class="addItem" id="cancel" type="button" value="CANCEL">
+                </div>
+            </form>
             </div>
-        </div>
-            <div class="col col-sm-3 mb-3">
-              <div class="card shadow-sm"> <img src="images/menu2.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <div class="card-title">Salad</div>
-                      <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
-                      <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+        <form id="menu">
+        <div class="container main">
+            <div class="row">
+
+                <div class="col-sm-4 item">
+                    <div class="content">
+                        <img src="images/menu1.jpg">
+                        <label class="foodName">Fruit Salad</label>
+                        <label class="foodPrice">Rs.200</label>
+                        <input type="checkbox" name="food" value="salad" id="checkSalad">
+                        <label name="item" for="checkSalad">Select Item</label>
+                        <input type="button" class="delButton" value="Delete">
                     </div>
-              </div>
-          </div>
-            <div class="col col-sm-3 mb-3">
-              <div class="card shadow-sm"> <img src="images/menu3.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <div class="card-title">Salad</div>
-                      <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
-                      <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
+                </div>
+
+                <div class="col-sm-4 item">
+                    <div class="content">
+                        <img src="images/menu1.jpg">
+                        <label class="foodName">Fruit Salad</label>
+                        <label class="foodPrice">Rs.200</label>
+                        <input type="checkbox" name="food" value="salad" id="checkFood">
+                        <label name="item" for="checkFood">Select Item</label>
+                        <input type="button" class="delButton" value="Delete">
+
+                    </div>                
+                </div>
+
+                <div class="col-sm-4 item">
+                    <div class="content">
+                        <img src="images/menu1.jpg">
+                        <label class="foodName">Fruit Salad</label>
+                        <label class="foodPrice">Rs.200</label>
+                        <input type="checkbox" name="food" value="salad" id="checkFood">
+                        <label name="item" for="checkFood">Select Item</label>
+                        <input type="button" class="delButton" value="Delete">
+                    </div>                
+                </div>
+
+                <div class="col-sm-4 item">
+                    <div class="content">
+                        <img src="images/menu1.jpg">
+                        <label class="foodName">Fruit Salad</label>
+                        <label class="foodPrice">Rs.200</label>
+                        <input type="checkbox" name="food" value="salad" id="checkFood">
+                        <label name="item" for="checkFood">Select Item</label>
+                        <input type="button" class="delButton" value="Delete">
+                    </div>                
+                </div>
+
+                <div class="col-sm-4 item">
+                    <div class="content">
+                        <img src="images/menu1.jpg">
+                        <label class="foodName">Fruit Salad</label>
+                        <label class="foodPrice">Rs.200</label>
+                        <input type="checkbox" name="food" value="salad" id="checkFood">
+                        <label name="item" for="checkFood">Select Item</label>
+                        <input type="button" class="delButton" value="Delete">
+                    </div>                
+                </div>
+
+                <div class="col-sm-4 item">
+                    <div class="content">
+                        <img src="images/menu1.jpg">
+                        <label class="foodName">Fruit Salad</label>
+                        <label class="foodPrice">Rs.200</label>
+                        <input type="checkbox" name="food" value="salad" id="checkFood">
+                        <label name="item" for="checkFood">Select Item</label>
+                        <input type="button" class="delButton" value="Delete">
+                    </div>                
+                </div>
+
+                <div class="col-sm-4 item">
+                    <div class="content">
+                        <img src="images/menu1.jpg">
+                        <label class="foodName">Fruit Salad</label>
+                        <label class="foodPrice">Rs.200</label>
+                        <input type="checkbox" name="food" value="salad" id="checkFood">
+                        <label name="item" for="checkFood">Select Item</label>
+                        <input type="button" class="delButton" value="Delete">
                     </div>
-              </div>
-          </div>
-            <div class="col col-sm-3 mb-3">
-              <div class="card shadow-sm"> <img src="images/menu4.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <div class="card-title">Salad</div>
-                    <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
-                    <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
                 </div>
-              </div>
-          </div>
-        </div>
-        <!-- first row ends here -->
-      <div class="row row2 pb-3">
-        <div class="col col-sm-3 mb-3">
-          <div class="card shadow-sm"> <img src="images/menu5.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <div class="card-title">Salad</div>
-                <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
-                  <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
-                </div>
-          </div>
-      </div>
-
-      <div class="col col-sm-3 mb-3">
-        <div class="card shadow-sm"> <img src="images/menu6.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="card-title">Salad</div>
-                <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
-                <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a> </div>
             </div>
         </div>
-    </div>
-
-    <div class="col col-sm-3 mb-3">
-        <div class="card shadow-sm"> <img src="images/menu7.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="card-title">Salad</div>
-                <div class="clearfix mb-3"> <span class="float-start">Rs.500</span></div>
-                <div class="text-center my-4"> <a href="#" class="btn btn-warning">Select item</a></div>
-            </div>
-        </div>
-    </div>
 
 
-    </div>
-<!-- second row ends here -->
+        <div class="container order">
+            <input type="submit" class="button" value="CREATE ORDER">
+          </div>
 
-    </div>
-</main>
+        </form>
 
-<div class="container order">
-    <button class="button">CREATE ORDER</button>
-</div>
-
-  <!-- Footer-->
-  <div class="footer">
+      <!-- Footer-->
+    <div class="footer">
         <div class="container">
             <p>mygroup Copyright &copy; 2021</p>
         </div>
-  </div>
-<script src="js/menu.js"></script>
+    </div>
+    <script src="js/menu.js"></script>
 </body>
 </html>
