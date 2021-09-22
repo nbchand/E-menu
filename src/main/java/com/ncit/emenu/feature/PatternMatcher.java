@@ -28,4 +28,20 @@ public class PatternMatcher {
         return matcher.matches();
     }
 
+    public static boolean checkNumberPattern(String number){
+        final String NUMBER_REGEX = "^\\d+$";
+        //checks if the string is number
+		final Pattern PATTERN = Pattern.compile(NUMBER_REGEX);
+		Matcher matcher = PATTERN.matcher(number);
+        return matcher.matches();
+    }
+
+    public static boolean checkItemName(String name){
+        final String NAME_REGEX = "^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,2}$";
+        //At least 2 alphabets before space, allows two spaces
+		final Pattern PATTERN = Pattern.compile(NAME_REGEX);
+		Matcher matcher = PATTERN.matcher(name);
+        return matcher.matches();
+    }
+
 }

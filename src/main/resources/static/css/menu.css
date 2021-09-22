@@ -191,3 +191,7 @@ background-color: black;
 z-index: 2;
 position: fixed;
 }
+
+#image{
+  height: 12em;
+}

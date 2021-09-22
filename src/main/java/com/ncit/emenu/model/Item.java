@@ -22,6 +22,8 @@ public class Item implements Serializable {
     @Column
     private int price;
     @Column
+    private String image;
+    @Column(name = "item_user_id")
     private int userId;
 
 
@@ -49,6 +51,14 @@ public class Item implements Serializable {
         this.price = price;
     }
 
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public int getUserId() {
         return this.userId;
     }
@@ -63,9 +73,9 @@ public class Item implements Serializable {
             " itemId='" + getItemId() + "'" +
             ", name='" + getName() + "'" +
             ", price='" + getPrice() + "'" +
+            ", image='" + getImage() + "'" +
             ", userId='" + getUserId() + "'" +
             "}";
     }
-
 
 }

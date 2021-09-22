@@ -35,21 +35,24 @@
 
 
         <div class="container heading"><h1>Available Items</h1></div>
-        <div class="container addBtn"><button id="addBtn">Add item</button></div>
-        <div class="formContainer" id="formContainer">           
-            <form id="dataInput">
+        <div class="container addBtn">
+            <button id="addBtn">Add item</button>
+            <div class="alert-danger mt-3 p-2 text-center h3" th:if="${result}" th:text="${result}"></div>
+        </div>
+        <div class="formContainer" id="formContainer">
+            <form id="dataInput" method="POST" action="/create-item" enctype="multipart/form-data">
                 <h3 class="formTitle">ADD ITEM</h3><hr>
                 <div class="name">
                     <label class="addItem">Enter Name :</label>
-                    <input class="addItem" maxlength="20" type="text">
+                    <input class="addItem" maxlength="30" type="text" name="name" required>
                 </div>
                 <div class="price">
                     <label class="addItem">Enter Price :</label>
-                    <input class="addItem" type="number">
+                    <input class="addItem" type="number" name="price" required>
                 </div>
                 <div class="picture">
                     <label class="addItem">Add picture :</label>
-                    <input class="addItem file" type="file">
+                    <input class="addItem file" type="file" name="img">
                 </div>
                 <div class="buttons">
                     <input class="addItem" id="submit" type="submit" value="SUBMIT">
@@ -57,87 +60,24 @@
                 </div>
             </form>
             </div>
-        <form id="menu">
+
+    <div th:if="${items}">
+        <div class="container alert-info text-center h4" th:if="${items.isEmpty()}">You have not added any items</div>
+        <form id="menu" th:unless="${items.isEmpty()}">
         <div class="container main">
             <div class="row">
 
-                <div class="col-sm-4 item">
+                <div class="col-sm-4 item" th:each="item: ${items}">
                     <div class="content">
-                        <img src="images/menu1.jpg">
-                        <label class="foodName">Fruit Salad</label>
-                        <label class="foodPrice">Rs.200</label>
-                        <input type="checkbox" name="food" value="salad" id="checkSalad">
-                        <label name="item" for="checkSalad">Select Item</label>
-                        <input type="button" class="delButton" value="Delete">
+                        <img id="image" th:src="@{${item.image}}" alt="no image">
+                        <label class="foodName" th:text="${item.name}"></label>
+                        <label class="foodPrice" th:text="'Rs. '+${item.price}"></label>
+                        <input type="checkbox" name="food" value="salad" th:id="'check'+${item.itemId}">
+                        <label name="item" th:for="'check'+${item.itemId}">Select Item</label>
+                        <input type="button" class="delButton" value="Delete" th:id="${item.itemId}">
                     </div>
                 </div>
 
-                <div class="col-sm-4 item">
-                    <div class="content">
-                        <img src="images/menu1.jpg">
-                        <label class="foodName">Fruit Salad</label>
-                        <label class="foodPrice">Rs.200</label>
-                        <input type="checkbox" name="food" value="salad" id="checkFood">
-                        <label name="item" for="checkFood">Select Item</label>
-                        <input type="button" class="delButton" value="Delete">
-
-                    </div>                
-                </div>
-
-                <div class="col-sm-4 item">
-                    <div class="content">
-                        <img src="images/menu1.jpg">
-                        <label class="foodName">Fruit Salad</label>
-                        <label class="foodPrice">Rs.200</label>
-                        <input type="checkbox" name="food" value="salad" id="checkFood">
-                        <label name="item" for="checkFood">Select Item</label>
-                        <input type="button" class="delButton" value="Delete">
-                    </div>                
-                </div>
-
-                <div class="col-sm-4 item">
-                    <div class="content">
-                        <img src="images/menu1.jpg">
-                        <label class="foodName">Fruit Salad</label>
-                        <label class="foodPrice">Rs.200</label>
-                        <input type="checkbox" name="food" value="salad" id="checkFood">
-                        <label name="item" for="checkFood">Select Item</label>
-                        <input type="button" class="delButton" value="Delete">
-                    </div>                
-                </div>
-
-                <div class="col-sm-4 item">
-                    <div class="content">
-                        <img src="images/menu1.jpg">
-                        <label class="foodName">Fruit Salad</label>
-                        <label class="foodPrice">Rs.200</label>
-                        <input type="checkbox" name="food" value="salad" id="checkFood">
-                        <label name="item" for="checkFood">Select Item</label>
-                        <input type="button" class="delButton" value="Delete">
-                    </div>                
-                </div>
-
-                <div class="col-sm-4 item">
-                    <div class="content">
-                        <img src="images/menu1.jpg">
-                        <label class="foodName">Fruit Salad</label>
-                        <label class="foodPrice">Rs.200</label>
-                        <input type="checkbox" name="food" value="salad" id="checkFood">
-                        <label name="item" for="checkFood">Select Item</label>
-                        <input type="button" class="delButton" value="Delete">
-                    </div>                
-                </div>
-
-                <div class="col-sm-4 item">
-                    <div class="content">
-                        <img src="images/menu1.jpg">
-                        <label class="foodName">Fruit Salad</label>
-                        <label class="foodPrice">Rs.200</label>
-                        <input type="checkbox" name="food" value="salad" id="checkFood">
-                        <label name="item" for="checkFood">Select Item</label>
-                        <input type="button" class="delButton" value="Delete">
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -147,6 +87,7 @@
           </div>
 
         </form>
+    </div>
 
       <!-- Footer-->
     <div class="footer">
