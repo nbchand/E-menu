@@ -195,3 +195,9 @@ position: fixed;
 #image{
   height: 12em;
 }
+
+.itemMsg{
+  margin-top: 2em;
+  height: 3em;
+  padding-top: 1em;
+}

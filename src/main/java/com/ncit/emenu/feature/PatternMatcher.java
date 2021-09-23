@@ -37,7 +37,7 @@ public class PatternMatcher {
     }
 
     public static boolean checkItemName(String name){
-        final String NAME_REGEX = "^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,2}$";
+        final String NAME_REGEX = "^[a-zA-Z0-9]{2,}(?: [a-zA-Z0-9]+){0,2}$";
         //At least 2 alphabets before space, allows two spaces
 		final Pattern PATTERN = Pattern.compile(NAME_REGEX);
 		Matcher matcher = PATTERN.matcher(name);

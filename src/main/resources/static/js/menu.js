@@ -1,9 +1,11 @@
+//displays add item form when add item buttonis clicked
 $('#addBtn').on('click',function(){
     $('#formContainer').css({
         display: 'block'
     })
 })
 
+//hides add item form when cancel button is clicked
 $('#cancel').on('click',function(){
     $('#formContainer').css({
         display: 'none'
@@ -20,10 +22,17 @@ menu.addEventListener("change", e => {
   })
 }, {passive: true});
 
-//   //create order
-//   //extracts names and prices from the active buttons as well as sends them in csv format to the controller
-//   menu.addEventListener("submit", e => {
-//     e.preventDefault();
-//     const input = new FormData(e.target);
-//     console.log(...input.getAll("food"));
-//   });
+$('.delButton').on('click',function(event){
+    const id = event.target.id;
+    fetch("/items/"+id, {
+        method: 'DELETE',
+    })
+    .then(response => response.text())
+    .then(data => {
+        location.href = "/menu";
+        console.log(data);
+      })
+    .catch((error) => {
+        console.error('Error:', error);
+      });
+})

@@ -12,8 +12,11 @@ import com.ncit.emenu.service.UploadService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -56,6 +59,19 @@ public class ItemController {
         item.setUserId((int)session.getAttribute("userId"));
         itemService.saveItem(item);
         return "redirect:/menu";
+    }
+
+    @DeleteMapping(value = "/items/{id}")
+    @ResponseBody
+    public String deletePost(@PathVariable int id) {
+        try{
+            itemService.deleteItem(id);
+            return "success";
+        }catch(Exception e){
+            e.printStackTrace();
+            return e.getMessage();
+        }
+
     }
     
 }
