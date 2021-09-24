@@ -12,7 +12,7 @@ $('#cancel').on('click',function(){
     })
 })
 
-//deal with button clicking
+//deals with button clicking
 const menu = document.querySelector("form#menu");
 
 menu.addEventListener("change", e => {
@@ -22,6 +22,7 @@ menu.addEventListener("change", e => {
   })
 }, {passive: true});
 
+//deletes items
 $('.delButton').on('click',function(event){
     const id = event.target.id;
     fetch("/items/"+id, {
@@ -35,4 +36,32 @@ $('.delButton').on('click',function(event){
     .catch((error) => {
         console.error('Error:', error);
       });
+})
+
+//creates orders
+$('#menu').submit(function(event){
+    event.preventDefault();
+
+    var array = [];
+    $("input:checkbox[name='food']:checked").each(function() {
+        array.push($(this).val());
+    });
+
+    fetch("/create-order", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(array),
+    })
+    .then(response => response.text())
+    .then(data => {
+        location.href = "/orders";
+        console.log(data);
+      })
+    .catch((error) => {
+        console.error('Error:', error);
+      });
+
+
 })

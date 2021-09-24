@@ -10,4 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ItemRepo extends JpaRepository<Item, Integer> {
     List<Item> findByUserId(int id);
+
+    //send lits of Item when list of itemId are provided
+    List<Item> findByItemIdIn(List<Integer> ids);
 }

@@ -26,7 +26,7 @@
                 <a class="nav-link" href="/menu">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Orders</a>
+                <a class="nav-link" href="/orders">Orders</a>
               </li>
             </ul>
 
@@ -76,7 +76,7 @@
                         <img id="image" th:src="@{${item.image}}" alt="no image">
                         <label class="foodName" th:text="${item.name}"></label>
                         <label class="foodPrice" th:text="'Rs. '+${item.price}"></label>
-                        <input type="checkbox" name="food" value="salad" th:id="'check'+${item.itemId}">
+                        <input type="checkbox" name="food" th:value="${item.itemId}" th:id="'check'+${item.itemId}">
                         <label name="item" th:for="'check'+${item.itemId}">Select Item</label>
                         <input type="button" class="delButton" value="Delete" th:id="${item.itemId}">
                     </div>
@@ -87,7 +87,7 @@
 
 
         <div class="container order">
-            <input type="submit" class="button" value="CREATE ORDER">
+            <input type="submit" class="button orderBtn" value="CREATE ORDER">
           </div>
 
         </form>
