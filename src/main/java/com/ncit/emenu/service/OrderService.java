@@ -29,5 +29,13 @@ public class OrderService {
     public List<Item> getItemsByIds(List<Integer> ids){
         return itemRepo.findByItemIdIn(ids);
     }
+
+    public List<Orders> getUserOrders(int id){
+        return orderRepo.findAllByUserId(id);
+    }
+
+    public void deleteOrder(int id){
+        orderRepo.deleteById(id);
+    }
     
 }

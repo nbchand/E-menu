@@ -1,0 +1,25 @@
+.order {
+    background-color: #C2C094;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.del {
+    padding: 0.5rem 0.9rem;
+    color: white;
+    border-radius: 5px;
+    background-color: #FF2626;
+    margin-right: 11rem;
+    margin-bottom: 4rem;
+    border: none;
+}
+
+.del:hover{
+    background-color: #BD1616;
+}
+
+@media only screen and (max-width: 600px) {
+    .text-right{
+        background-color: #BD1616;
+    }
+  }

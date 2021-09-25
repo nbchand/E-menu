@@ -1,3 +1,5 @@
+$('#jsError').hide();
+
 //displays add item form when add item buttonis clicked
 $('#addBtn').on('click',function(){
     $('#formContainer').css({
@@ -46,6 +48,15 @@ $('#menu').submit(function(event){
     $("input:checkbox[name='food']:checked").each(function() {
         array.push($(this).val());
     });
+
+    if(array.length === 0)
+    {
+        $('#jsError').show();
+
+        $('#jsError').html("<div class='alert-danger mt-3 p-2 text-center h3'>No items selected</div>");
+        window.scrollTo(0, 0);
+        return;
+    };
 
     fetch("/create-order", {
         method: 'POST',

@@ -3,14 +3,13 @@ package com.ncit.emenu.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+
 
 @Entity
 public class Orders implements Serializable {
@@ -25,11 +24,14 @@ public class Orders implements Serializable {
     @Column(name = "order_user_id")
     private int userId;
 
-    @Column
-    @ElementCollection
-    @CollectionTable(name = "order_item_id",
-                    joinColumns = @JoinColumn(name = "order_id"))
-    private List<Integer> itemsId;
+    // @Column
+    // @ElementCollection
+    // @CollectionTable(name = "order_item_id",
+    //                 joinColumns = @JoinColumn(name = "order_id"))
+    // private List<Integer> itemsId;
+
+    @ManyToMany
+    private List<Item> items;
 
 
     public int getOrderId() {
@@ -48,22 +50,25 @@ public class Orders implements Serializable {
         this.userId = userId;
     }
 
-    public List<Integer> getItemsId() {
-        return this.itemsId;
+
+    public List<Item> getItems() {
+        return this.items;
     }
 
-    public void setItemsId(List<Integer> itemsId) {
-        this.itemsId = itemsId;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
+
 
     @Override
     public String toString() {
         return "{" +
             " orderId='" + getOrderId() + "'" +
             ", userId='" + getUserId() + "'" +
-            ", itemsId='" + getItemsId() + "'" +
+            ", items='" + getItems() + "'" +
             "}";
     }
+
 
 
 }

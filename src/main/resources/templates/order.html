@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/order.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Orders</title>
@@ -36,12 +37,42 @@
   </nav>
   <!-- nav bar ends -->
 
+  <div class="container text-center my-3"><h1>Available orders</h1><hr></div>
 
-  <div class="container">
-    
+  <th:block th:each="order : ${orders}"></th:block>
+  <div class='container alert-info p-2 text-center' th:if="${orders.isEmpty()}">No orders available</div>
+
+  <div th:unless="${orders.isEmpty()}" th:each="order,iterStat : ${orders}">
+  <h4 class="container text-center font-weight-bold" th:text="'Order '+${iterStat.index+1}"></h4>
+<div class="container w-50 order">
+
+  <div class="row mt-3 heading">
+    <label class="col-sm-6 font-weight-bold">Items</label><label class="col-sm-6 text-right font-weight-bold">Price</label>
+  </div><hr>
+
+  <th:block th:each="item : ${order.getItems()}">
+
+  <div class="row items">
+    <label class="col-sm-6" th:text="${item.name}">Food</label><label class="col-sm-6 text-right" th:text="'Rs.'+${item.price}"></label>
   </div>
 
+</th:block>
+  <hr>
+
+  <div class="row items">
+    <label class="col-sm-6 font-weight-bold mt-3">Total</label><label class="col-sm-6 text-right font-weight-bold mt-3" th:text="'Rs.'+${#aggregates.sum(order.getItems().![price])}"></label>
+  </div>
   
+</div>
+  <div class="container text-right pt-3"><input class="del" type="button" value="Delete" th:id="${order.orderId}"></div>
+</div>
+
+</th:block>
+
+
+
+
+
       <!-- Footer-->
       <div class="footer">
         <div class="container">
@@ -49,7 +80,7 @@
         </div>
     </div>
 
-
+<script src="js/order.js"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
