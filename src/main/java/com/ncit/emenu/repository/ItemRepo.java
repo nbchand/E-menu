@@ -13,4 +13,6 @@ public interface ItemRepo extends JpaRepository<Item, Integer> {
 
     //send lits of Item when list of itemId are provided
     List<Item> findByItemIdIn(List<Integer> ids);
+
+    Item findById(int id);
 }

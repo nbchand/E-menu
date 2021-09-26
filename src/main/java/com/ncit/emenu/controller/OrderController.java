@@ -47,7 +47,7 @@ public class OrderController {
     @ResponseBody
     public String createOrder(@RequestBody String[] arr, HttpSession session){
         List<Integer> itemIds = ListMaker.getIntegerList(arr);
-        List<Item> items = orderService.getItemsByIds(itemIds);
+        List<Item> items = itemService.getItemsByIds(itemIds);
         if(itemIds.isEmpty()){
             return "failure";
         }

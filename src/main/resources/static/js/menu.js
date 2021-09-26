@@ -32,8 +32,14 @@ $('.delButton').on('click',function(event){
     })
     .then(response => response.text())
     .then(data => {
-        location.href = "/menu";
-        console.log(data);
+        if(data==="success"){
+            location.href = "/menu";
+        }else{
+            $('#jsError').show();
+            $('#jsError').html("<div class='alert-danger mt-3 p-2 text-center h3'>"+data+"</div>");
+            window.scrollTo(0, 0);
+        }
+        
       })
     .catch((error) => {
         console.error('Error:', error);
@@ -52,7 +58,6 @@ $('#menu').submit(function(event){
     if(array.length === 0)
     {
         $('#jsError').show();
-
         $('#jsError').html("<div class='alert-danger mt-3 p-2 text-center h3'>No items selected</div>");
         window.scrollTo(0, 0);
         return;

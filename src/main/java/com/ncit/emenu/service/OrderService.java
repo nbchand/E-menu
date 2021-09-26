@@ -1,5 +1,6 @@
 package com.ncit.emenu.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -26,16 +27,18 @@ public class OrderService {
         orderRepo.save(order);
     }
 
-    public List<Item> getItemsByIds(List<Integer> ids){
-        return itemRepo.findByItemIdIn(ids);
-    }
-
     public List<Orders> getUserOrders(int id){
         return orderRepo.findAllByUserId(id);
     }
 
     public void deleteOrder(int id){
         orderRepo.deleteById(id);
+    }
+
+    public List<Orders> getByItem(Item item){
+        List<Item> items = new ArrayList<>();
+        items.add(item);
+        return orderRepo.findAllByItemsIn(items);
     }
     
 }

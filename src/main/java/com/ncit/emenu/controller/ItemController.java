@@ -8,6 +8,7 @@ import com.ncit.emenu.exception.StorageException;
 import com.ncit.emenu.feature.PatternMatcher;
 import com.ncit.emenu.model.Item;
 import com.ncit.emenu.service.ItemService;
+import com.ncit.emenu.service.OrderService;
 import com.ncit.emenu.service.UploadService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class ItemController {
 
     @Autowired
     ItemService itemService;
+
+    @Autowired
+    OrderService orderService;
 
     @PostMapping("/create-item")
     public String saveItems(@RequestParam("img") MultipartFile multipartFile, @RequestParam("name") String name,
@@ -64,6 +68,9 @@ public class ItemController {
     @DeleteMapping(value = "/items/{id}")
     @ResponseBody
     public String deletePost(@PathVariable int id) {
+        if(!orderService.getByItem(itemService.getItemById(id)).isEmpty()){
+            return "Can't delete item as order is in progress";
+        }
         try{
             itemService.deleteItem(id);
             return "success";

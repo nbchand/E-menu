@@ -28,9 +28,19 @@ public class ItemService {
         return itemRepo.findByUserId(userId);
     }
 
+    public List<Item> getItemsByIds(List<Integer> ids){
+        return itemRepo.findByItemIdIn(ids);
+    }
+
+    public Item getItemById(int id){
+        return itemRepo.findById(id);
+    }
+
     public void deleteItem(int id) throws Exception{
         String imgRelPath = itemRepo.getById(id).getImage();
-        itemRepo.deleteById(id);
-        Files.deleteIfExists(Paths.get(imageParentPath+imgRelPath));
+        if(!imgRelPath.equals("")){
+            itemRepo.deleteById(id);
+            Files.deleteIfExists(Paths.get(imageParentPath+imgRelPath));
+        }
     }
 }
