@@ -1,4 +1,5 @@
 $('#jsError').hide();
+// $('.occurance').hide();
 
 //displays add item form when add item buttonis clicked
 $('#addBtn').on('click',function(){
@@ -14,7 +15,7 @@ $('#cancel').on('click',function(){
     })
 })
 
-//deals with button clicking
+// deals with button clicking
 const menu = document.querySelector("form#menu");
 
 menu.addEventListener("change", e => {
@@ -22,7 +23,10 @@ menu.addEventListener("change", e => {
   menu.querySelectorAll("[name=food]").forEach(check => {
   	setTimeout(() => check.nextElementSibling.textContent = check.checked ? "Selected" : "Select Item", 150);
   })
+
 }, {passive: true});
+
+
 
 //deletes items
 $('.delButton').on('click',function(event){
@@ -50,12 +54,15 @@ $('.delButton').on('click',function(event){
 $('#menu').submit(function(event){
     event.preventDefault();
 
-    var array = [];
+    var items = [];
+    var occurance = [];
     $("input:checkbox[name='food']:checked").each(function() {
-        array.push($(this).val());
+        items.push($(this).val());
+        const quantity = $(this).siblings('.occurance').children('select').val();
+        occurance.push(quantity);
     });
 
-    if(array.length === 0)
+    if(items.length === 0)
     {
         $('#jsError').show();
         $('#jsError').html("<div class='alert-danger mt-3 p-2 text-center h3'>No items selected</div>");
@@ -63,12 +70,14 @@ $('#menu').submit(function(event){
         return;
     };
 
+    const data = JSON.stringify({items,occurance});
+
     fetch("/create-order", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(array),
+          body: data,
     })
     .then(response => response.text())
     .then(data => {

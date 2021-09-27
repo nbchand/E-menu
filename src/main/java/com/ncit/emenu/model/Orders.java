@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-
 @Entity
 public class Orders implements Serializable {
 
@@ -30,8 +29,12 @@ public class Orders implements Serializable {
     //                 joinColumns = @JoinColumn(name = "order_id"))
     // private List<Integer> itemsId;
 
+    @Column
     @ManyToMany
-    private List<Item> items;
+    private List<OrderItem> orderItems;
+
+    @Column
+    private int total;
 
 
     public int getOrderId() {
@@ -50,25 +53,31 @@ public class Orders implements Serializable {
         this.userId = userId;
     }
 
-
-    public List<Item> getItems() {
-        return this.items;
+    public List<OrderItem> getOrderItems() {
+        return this.orderItems;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
+    public int getTotal() {
+        return this.total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
     @Override
     public String toString() {
         return "{" +
             " orderId='" + getOrderId() + "'" +
             ", userId='" + getUserId() + "'" +
-            ", items='" + getItems() + "'" +
+            ", orderItems='" + getOrderItems() + "'" +
+            ", total='" + getTotal() + "'" +
             "}";
     }
-
 
 
 }

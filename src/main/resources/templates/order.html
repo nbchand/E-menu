@@ -50,17 +50,17 @@
     <label class="col-sm-6 font-weight-bold">Items</label><label class="col-sm-6 text-right font-weight-bold">Price</label>
   </div><hr>
 
-  <th:block th:each="item : ${order.getItems()}">
+  <th:block th:each="orderItem : ${order.getOrderItems()}">
 
   <div class="row items">
-    <label class="col-sm-6" th:text="${item.name}">Food</label><label class="col-sm-6 text-right" th:text="'Rs.'+${item.price}"></label>
+    <label class="col-sm-6" th:text="${orderItem.item.name}">Food</label><label class="col-sm-6 text-right" th:text="${orderItem.quantity}==1?'Rs.'+${orderItem.item.price}:${orderItem.quantity}+' X Rs.'+${orderItem.item.price}"></label>
   </div>
 
 </th:block>
   <hr>
 
   <div class="row items">
-    <label class="col-sm-6 font-weight-bold mt-3">Total</label><label class="col-sm-6 text-right font-weight-bold mt-3" th:text="'Rs.'+${#aggregates.sum(order.getItems().![price])}"></label>
+    <label class="col-sm-6 font-weight-bold mt-3">Total</label><label class="col-sm-6 text-right font-weight-bold mt-3" th:text="'Rs.'+${order.total}"></label>
   </div>
   
 </div>

@@ -48,6 +48,11 @@ public String store(MultipartFile file, String id) {
         }
         Files.copy(file.getInputStream(), this.rootLocation.resolve(filename),
                 StandardCopyOption.REPLACE_EXISTING);
+        try{
+            Thread.sleep(3000);  
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
 
         storedLocation = relativePath+filename;
     }

@@ -68,10 +68,11 @@ public class ItemController {
     @DeleteMapping(value = "/items/{id}")
     @ResponseBody
     public String deletePost(@PathVariable int id) {
-        if(!orderService.getByItem(itemService.getItemById(id)).isEmpty()){
+        if(!orderService.getByItemId(id).isEmpty()){
             return "Can't delete item as order is in progress";
         }
         try{
+            
             itemService.deleteItem(id);
             return "success";
         }catch(Exception e){
